@@ -1,0 +1,169 @@
+\documentclass[UTF8,12pt]{article} % 12pt 为字号大小
+\usepackage{amssymb,amsfonts,amsmath,amsthm}
+\usepackage{times}
+\usepackage{graphicx} % 插图
+\usepackage{cite}
+\usepackage{xeCJK}
+
+%----------
+% 字体定义
+%----------
+\setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
+\setCJKsansfont{SimHei}
+\setCJKfamilyfont{zhsong}{SimSun}
+\setCJKfamilyfont{zhhei}{SimHei}
+\setCJKfamilyfont{zhkai}{KaiTi}
+\setCJKfamilyfont{zhfs}{FangSong}
+\setCJKfamilyfont{zhli}{LiSu}
+\setCJKfamilyfont{zhyou}{YouYuan}
+\newcommand*{\songti}{\CJKfamily{zhsong}} % 宋体
+\newcommand*{\heiti}{\CJKfamily{zhhei}}   % 黑体
+\newcommand*{\kaiti}{\CJKfamily{zhkai}}  % 楷体
+\newcommand*{\fangsong}{\CJKfamily{zhfs}} % 仿宋
+\newcommand*{\lishu}{\CJKfamily{zhli}}    % 隶书
+\newcommand*{\yuanti}{\CJKfamily{zhyou}} % 圆体
+
+%----------
+% 版面设置
+%----------
+%首段缩进
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+%行距
+\renewcommand{\baselinestretch}{1.25} % 1.25倍行距
+%页边距
+\usepackage[a4paper]{geometry}
+\geometry{verbose,
+  tmargin=2cm,% 上边距
+  bmargin=2cm,% 下边距
+  lmargin=2cm,% 左边距
+  rmargin=2cm % 右边距
+}
+
+% ----------
+% 多级标题格式在此设置
+% https://zhuanlan.zhihu.com/p/32712209
+% \titleformat{command}[shape]%定义标题类型和标题样式，字体
+% {format}%定义标题格式:字号（大小），加粗，斜体
+% {label}%定义标题的标签，即标题的标号等
+% {sep}%定义标题和标号之间的水平距离
+% {before-code}%定义标题前的内容
+% [after-code]%定义标题后的内容
+% ----------
+\usepackage{titlesec} %自定义多级标题格式的宏包
+% 三级标题
+% 4
+\titleformat{\section}[block]{\large \bfseries}{\arabic{section}}{1em}{}[]
+% 4.1
+\titleformat{\subsection}[block]{\normalsize \bfseries}{\arabic{section}.\arabic{subsection}}{1em}{}[]
+% 4.1.1
+\titleformat{\subsubsection}[block]{\small \mdseries}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}{1em}{}[]
+\titleformat{\paragraph}[block]{\footnotesize \bfseries}{[\arabic{paragraph}]}{1em}{}[]
+
+
+%----------
+% 其他宏包
+%----------
+%图形相关
+\usepackage[x11names]{xcolor} % must before tikz, x11names defines RoyalBlue3
+\usepackage{graphicx}
+\usepackage{pstricks,pst-plot,pst-eps}
+\usepackage{subfig}
+\def\pgfsysdriver{pgfsys-dvipdfmx.def} % put before tikz
+\usepackage{tikz}
+
+%原文照排
+\usepackage{verbatim}
+
+%链接的格式
+\usepackage[colorlinks,linkcolor=red]{hyperref}
+%表格
+\usepackage{tabularx}
+
+%==========
+% 正文部分
+%==========
+
+\begin{document}
+
+% \kaiti 是楷体，参见上面的字体设置
+\title{\bf{\kaiti 深度学习课程报告}}
+\author{姓名:XX\hspace{1cm}学号:XX}
+\date{}
+\maketitle
+
+\abstract{
+在计算机视觉领域。。。
+}
+\paragraph{\bf{ \kaiti 关键词：计算机视觉}}
+\paragraph{\\}
+
+\section{一级标题}
+\textbf{标题大小、样式可设置，见.tex源文件中\%--标题设置--部分。}
+
+  正文：人的大脑拥有复杂的结构，大脑中的视觉系统使得人拥有感知环境和描述环境的能力。
+
+\subsection{二级标题}
+正文：对于计算机视觉研究领域而言。。。
+\subsubsection{三级标题}
+正文：第一段。。。第一步，需要从从语义层面理解图像内容。。。一种比较常见的图像字幕生成法是基于检索技术，对于给定的查询图像，基于检索的方法首先提取图像特征，
+后将所提取的特征在数据库中通过检索方法来查询一个或一组与其特征向量相似的图片，最后利用数据库中相似图片的描述直接合成检索图像的描述（或者直接使用相似度最高的图像描述作为查询图像的描述）。
+  
+  第二段。。。。也就是说，生成的查询图像的描述可以是已经存在的句子，也可以是由检索到的句子组成。
+
+\section{引用}
+\subsection{图片引用}
+  图片引用：如图 \ref{fig:enc-dec} 所示，图中。。。\textbf{引用对应的label，注意图片的路径即可。}
+\textbf{latex会根据页面的篇幅自动调整图片的位置}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[scale=1.2]{figs/pic.png}
+  \caption{Encoder-decoder结构}
+  \label{fig:enc-dec}
+\end{figure}
+
+\subsection{表格引用}
+\begin{table}
+  \centering
+  % For LaTeX tables use
+  \begin{tabular}{lllll}
+    \hline
+    \noalign{\smallskip}
+    model & BLEU-1 & BLUE-4 & ROUGE-L & CIDEr  \\
+    \noalign{\smallskip}
+    \hline
+    \noalign{\smallskip}
+    B-up\&T-down & 77.2 & 36.2 & 56.4 & 113.5 \\
+    AOAnet & 77.4 & 38.1 & 58.2 & 119.8 \\
+    \noalign{\smallskip}
+    \hline
+  \end{tabular}
+  % table caption is above the table
+  \caption{Image caption其他相关模型}
+  \label{tab:1}% Give a unique label
+\end{table}
+  表格引用：表 \ref{tab:1} 中。。。
+\subsection{其他引用}\label{anchor-2-3}
+  章节引用：如 \ref{anchor-2-3} 节所描述。。。
+  
+  网页引用：\href{https:www.baidu.con}{百度}上。。。
+
+  文献引用：正如Hinton在文\cite{lecun2015deep}\cite{xu2015show}中所述。。。
+\textbf{注意,文献的引用需要新建 filename.bib 文件，将文献对应的bitex格式的引用复制粘贴到文件中然后再引用！}
+谷歌学术或微软学术均可生成文献引用可用的Bibtex格式。
+\section{公式}
+公式等号对齐：
+\begin{align}
+  f_{att}(c_i, h_i) &= \boldsymbol{v_a}tanh(\boldsymbol{W_ac_i},\boldsymbol{W_bh_i})\\
+  \alpha_i &= f_{att}(\boldsymbol{c_i}, \boldsymbol{h_i})\\
+  \boldsymbol{s} &= softmax(\boldsymbol{\alpha})\\
+  \boldsymbol{z} &= \sum{s_i\boldsymbol{c_i}}  
+\end{align}
+
+  其中 $\boldsymbol{c_i}$表示。。。
+
+
+\bibliography{refs}
+\bibliographystyle{plain}
+
+\end{document}
