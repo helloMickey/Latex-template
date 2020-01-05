@@ -1,7 +1,8 @@
 # Latex-template
-latex中文模板，生成的->[pdf](https://github.com/helloMickey/Latex-template/blob/master/template.pdf)。主要记录latex一些常用的操作，持续更新。。
+latex中文模板，主要记录latex一些常用的简单操作，比较**适合新手使用**。
+生成的->[pdf](https://github.com/helloMickey/Latex-template/blob/master/template.pdf)。持续更新。。
 
-效果如下图：
+效果如下图（最早的版本），完整最新版请查看[template.pdf](https://github.com/helloMickey/Latex-template/blob/master/template.pdf)：
 <center>
     <img src="image/1.png" width="300"/><img src="image/2.png" width="300"/>
 </center>
